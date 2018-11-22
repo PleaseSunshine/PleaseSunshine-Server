@@ -3,7 +3,7 @@ var router = express.Router();
 var simulation = require('./simulation')
 
 router.use("/simulations", simulation);
-router.get("/users")
+// router.get("/users")
 module.exports = router;
 
 

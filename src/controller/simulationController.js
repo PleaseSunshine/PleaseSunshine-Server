@@ -4,8 +4,9 @@
 비용 - /simulation/cost
 */
 const { respondJson, respondOnError } = require('../lib/response');
-const kospo = require("../lib/env_kospo")
+const kospo = require("../lib/kospo")
 const energy = require("../lib/energy")
+var date = new Date();
 
 const getEnergy = async(req, res) => {
     try{
@@ -22,7 +23,12 @@ const getEnergy = async(req, res) => {
 /* api */
 const getEnv = async(req, res) => {
     try{
-        let result = await kospo()
+        // if(date.getDay() == 1){
+            var result = await kospo.getKospoAPI()
+        // }else{
+        //     var result  = await kospo.getEnvData()
+        // }
+        // console.log(result)
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);
