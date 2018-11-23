@@ -38,8 +38,8 @@ app.use('/', require('./src/routes'))
 //   res.render('error');
 // });
 
-app.listen(3000, () => {
-  console.log("3000번 포트에서 서버 실행중...")
+app.listen(3333, () => {
+  console.log("3333번 포트에서 서버 실행중...")
 })
 
 module.exports = app;
