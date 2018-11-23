@@ -4,7 +4,7 @@ const controller = require("../controller/simulationController")
 
 simulation.get("/energy/:lat/:lon/:angle", controller.getEnergy)
 simulation.get("/environment", controller.getEnv)
-simulation.get("/cost", controller.getCost)
+simulation.get("/cost/:watt", controller.getCost)
 
 module.exports = simulation;
 

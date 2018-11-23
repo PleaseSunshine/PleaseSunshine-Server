@@ -6,6 +6,7 @@
 const { respondJson, respondOnError } = require('../lib/response');
 const kospo = require("../lib/kospo")
 const energy = require("../lib/energy")
+const cost = require("../lib/cost")
 var date = new Date();
 
 const getEnergy = async(req, res) => {
@@ -13,7 +14,8 @@ const getEnergy = async(req, res) => {
         let lat = req.params.lat;
         let lon = req.params.lon;
         let angle = req.params.angle;
-        let result = await energy(lat, lon, angle)
+        let energy = await cost.getSunshine(lat, lon, angle)
+        // let subnshine = awaut cost.getEnergy(energy)
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);
@@ -46,9 +48,25 @@ const getEnv = async(req, res) => {
 }
 const getCost = async(req, res) => {
     try{
-        let user_id = req.params.user_id;
-        let result = await usersLogic.getUserById(user_id);
-        respondJson("Success", result, res, 200);
+        let watt = req.params.watt;
+
+        console.log("cost: " + watt)
+        // let ElecReduAvg = await cost.getElecReduAvg(watt);
+        let installCostAvg = await cost.getInstallCost(watt);
+        // let bePoint = await cost.getBePoint(watt);
+        // let volunteer = await cost.getvolunteer(watt);
+        // let coffee = await cost.getCoffee(watt);
+
+        // let result = {
+        //     "watt": watt, 
+        //     "ElecReduAvg":ElecReduAvg, 
+        //     "installCostAvg" : installCostAvg + "원", 
+        //     "bePoint": bePoint + "개월", 
+        //     "volunteer" : volunteer + "명의 아이들", 
+        //     "coffee":coffee + "잔의 커피"
+        // }
+        // respondJson("Success", result, res, 200);
+        respondJson("Success", installCostAvg, res, 200);
     }catch(err){
         console.log(err);
         respondOnError(err.message, res, err.statusCode);
