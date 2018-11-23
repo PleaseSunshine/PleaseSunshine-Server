@@ -12,6 +12,9 @@ module.exports = {
         
     },
     getEnergy : async function (energy, angle) {
-        return EnergyCalculator(energy, angle)
-    }
+        return Number(EnergyCalculator(energy, angle))
+    },
+    getPercentage : async function () {
+        return 70
+    },
 }

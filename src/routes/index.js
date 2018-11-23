@@ -1,9 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var simulation = require('./simulation')
+const express = require('express');
+const router = express.Router();
+const simulation = require('./simulation');
+const company = require( './company' ) ;
+
 
 router.use("/simulations", simulation);
-// router.get("/users")
+
+//	company 관련
+router.use( '/company' , company ) ;
+//	panel 관련
+router.use( '/panel' , panel ) ;
+
 module.exports = router;
 
 

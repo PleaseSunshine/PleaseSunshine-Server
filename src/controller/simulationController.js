@@ -13,10 +13,14 @@ var date = new Date();
 /* /simulation/energy/:lat/:lon/:angle */
 const getEnergy = async(req, res) => {
     try{
-        let {lat,lon,angle} = req.params;
-        let e = await energy.getSunshine(lat, lon, angle)
+        // let {lat,lon,angle} = req.params;e
+        // let e = await energy.getSunshine(lat, lon, angle)
+        let e = 2062.453333;
+        let angle = 30;
         let subnshine = await energy.getEnergy(e, angle)
-        respondJson("Success", subnshine, res, 200);
+        let persentage =  await energy.getPercentage()
+        let result = {subnshine, persentage}
+        respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);
         respondOnError(err.message, res, err.statusCode);
