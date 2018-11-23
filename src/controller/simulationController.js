@@ -51,22 +51,21 @@ const getEnv = async(req, res) => {
 /* /simulation/cost/:watt */
 const getCost = async(req, res) => {
     try{
-        let watt = Number(req.params.watt);
+        const watt = Number(req.params.watt);
+        const savedMoney = await cost.getElecReduAvg(1000000, watt);
+        const installCostAvg = await cost.getInstallCostAvg(watt);
+        /* 수정필요 */
+        const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
+        const volunteer = await cost.getvolunteer(watt);
+        const coffee = await cost.getCoffee(watt);
 
-        console.log("cost: " + watt)
-        let savedMoney = await cost.getElecReduAvg(1000000);
-        let installCostAvg = await cost.getInstallCost(watt);
-        let bePoint = await cost.getBePoint(watt);
-        // let volunteer = await cost.getvolunteer(watt);
-        // let coffee = await cost.getCoffee(watt);
-
-        let result = {
+        const result = {
             watt, 
             savedMoney, 
             installCostAvg,
-            bePoint
-        //     "volunteer" : volunteer + "명의 아이들", 
-        //     "coffee":coffee + "잔의 커피"
+            bePoint,
+            volunteer,
+            coffee
         }
         respondJson("Success", result, res, 200);
         // respondJson("Success", installCostAvg, res, 200);
