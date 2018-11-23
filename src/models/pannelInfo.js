@@ -12,5 +12,4 @@ const selectInstallPriceByWatt = async(watt) => {
     const result = db.query(sql, watt);
     return result;
 }
-
 module.exports ={selectInstallPriceByWatt}

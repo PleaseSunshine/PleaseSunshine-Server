@@ -5,7 +5,7 @@ const company = require( './company' ) ;
 const panel = require( './panel' ) ;
 
 
-router.use("/simulations", simulation);
+router.use("/", simulation);
 
 //	company 관련
 router.use( '/company' , company ) ;
