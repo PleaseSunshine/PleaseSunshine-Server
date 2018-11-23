@@ -8,7 +8,7 @@
 const db = require('../lib/db');
 
 const selectInstallPriceByWatt = async(watt) => {
-    const sql = `SELECT AVG(pi_installPrice) as price FROM PannelInfo where pi_watt=?`;
+    const sql = `SELECT AVG(pi_installPrice) as price FROM PanelInfo where pi_watt=?`;
     const result = db.query(sql, watt);
     return result;
 }

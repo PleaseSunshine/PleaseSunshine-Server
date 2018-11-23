@@ -18,8 +18,8 @@ const getEnergy = async(req, res) => {
         let e = 2062.453333;
         let angle = 30;
         let subnshine = await energy.getEnergy(e, angle)
-        let persentage =  await energy.getPercentage()
-        let result = {subnshine, persentage}
+        let persent=  await energy.getPercentage()
+        let result = {subnshine, persent}
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);

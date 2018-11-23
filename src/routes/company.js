@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../../config/dbPool');
-const calculActualPrice = require( '../../modules/calculActualPrice' ) ;
+const pool = require('../lib/db').getPool();
+const calculActualPrice = require( '../lib/calculActualPrice' ) ;
 const async = require('async');
 const moment = require('moment');
 
 router.get('/', function(req, res) {
-
     let task = [
 
         function(callback) {

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const simulation = require('./simulation');
 const company = require( './company' ) ;
+const panel = require( './panel' ) ;
 
 
 router.use("/simulations", simulation);
