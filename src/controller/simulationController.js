@@ -79,23 +79,22 @@ const getEnv = async(req, res) => {
 // }
 const getCost = async(req, res)=>{
     try{
-        var watts = [250, 260, 270, 300];
-        if(req.query.watt) 
+        if(req.query.watt) watts =[req.query.watt];
+        else var watts = [250, 260, 270, 300];
         var result =[];
         var i=0;
         while(i<watts.length){
             var watt = watts[i];
             const savedMoney = await cost.getElecReduAvg(1000000, watt);
             const installCostAvg = await cost.getInstallCostAvg(watt);
-            /* 수정필요 */
             const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
-            result.push({watt, 
-                savedMoney, 
-                installCostAvg,
-                bePoint})
+            if(watts.length==1){
+                var volunteer = await cost.getvolunteer(watt);
+                var coffee = await cost.getCoffee(watt);
+                result.push({watt, savedMoney, installCostAvg,bePoint,volunteer,coffee})
+            }else result.push({watt, savedMoney, installCostAvg,bePoint})
             i++;
         }
-
         respondJson("Success", result, res, 200);
         // respondJson("Success", installCostAvg, res, 200);
     }catch(err){
@@ -103,4 +102,4 @@ const getCost = async(req, res)=>{
         respondOnError(err.message, res, err.statusCode);
     }  
 }
-module.exports={getEnergy, getEnv, getCost, getAllCost};
+module.exports={getEnergy, getEnv, getCost};
