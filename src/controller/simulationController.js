@@ -13,7 +13,7 @@ var date = new Date();
 /* /simulation/energy/:lat/:lon/:angle */
 const getEnergy = async(req, res) => {
     try{
-        let {lat,lon,angle} = req.params;
+        let {lat,lon,angle} = req.query;
 
         let e = await energy.getSunshine(lat, lon)
         let sunshine = await energy.getEnergy(e, angle)
@@ -26,7 +26,6 @@ const getEnergy = async(req, res) => {
         else respondOnError(err.message, res, err.statusCode);
     } 
 }
-
 /* /simulation/environment */
 const getEnv = async(req, res) => {
     try{
@@ -52,30 +51,56 @@ const getEnv = async(req, res) => {
         respondOnError(err.message, res, err.statusCode);
     } 
 }
-/* /simulation/cost/:watt */
-const getCost = async(req, res) => {
-    try{
-        const watt = Number(req.params.watt);
-        const savedMoney = await cost.getElecReduAvg(1000000, watt);
-        const installCostAvg = await cost.getInstallCostAvg(watt);
-        /* 수정필요 */
-        const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
-        const volunteer = await cost.getvolunteer(watt);
-        const coffee = await cost.getCoffee(watt);
+// /* /simulation/cost/:watt */
+// const getCost = async(req, res) => {
+//     try{
+//         const watt = Number(req.query.watt);
+//         const savedMoney = await cost.getElecReduAvg(1000000, watt);
+//         const installCostAvg = await cost.getInstallCostAvg(watt);
+//         /* 수정필요 */
+//         const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
+//         const volunteer = await cost.getvolunteer(watt);
+//         const coffee = await cost.getCoffee(watt);
 
-        const result = {
-            watt, 
-            savedMoney, 
-            installCostAvg,
-            bePoint,
-            volunteer,
-            coffee
+//         const result = {
+//             watt, 
+//             savedMoney, 
+//             installCostAvg,
+//             bePoint,
+//             volunteer,
+//             coffee
+//         }
+//         respondJson("Success", result, res, 200);
+//         // respondJson("Success", installCostAvg, res, 200);
+//     }catch(err){
+//         console.log(err);
+//         respondOnError(err.message, res, err.statusCode);
+//     } 
+// }
+const getCost = async(req, res)=>{
+    try{
+        var watts = [250, 260, 270, 300];
+        if(req.query.watt) 
+        var result =[];
+        var i=0;
+        while(i<watts.length){
+            var watt = watts[i];
+            const savedMoney = await cost.getElecReduAvg(1000000, watt);
+            const installCostAvg = await cost.getInstallCostAvg(watt);
+            /* 수정필요 */
+            const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
+            result.push({watt, 
+                savedMoney, 
+                installCostAvg,
+                bePoint})
+            i++;
         }
+
         respondJson("Success", result, res, 200);
         // respondJson("Success", installCostAvg, res, 200);
     }catch(err){
         console.log(err);
         respondOnError(err.message, res, err.statusCode);
-    } 
+    }  
 }
-module.exports={getEnergy, getEnv, getCost};
+module.exports={getEnergy, getEnv, getCost, getAllCost};

@@ -11,7 +11,7 @@ module.exports = {
     //e1, e2, e3 과 angle로 태양광 구함
     getSunshine : async function (lat, lon) {
         let result = await busanSun.selectMinSunshine(lat, lon);
-        console.log(result)
+        console.log("s" + result)
         if(!result[0].sunshine) return 0
         return Number(result[0].sunshine)
     },
