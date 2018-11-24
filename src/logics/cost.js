@@ -9,8 +9,6 @@ module.exports = {
     },
     getInstallCostAvg : async function (watt) {
         let installCostAvg = await pannelInfo.selectInstallPriceByWatt(watt);
-        // result = JSON.stringify(installCostAvg)
-        // console.log(result)
         // app.locals.g_installcost=installCostAvg.price; 전역변수로 저장하고 싶
         if(!installCostAvg[0].price) return 0
         return installCostAvg[0].price

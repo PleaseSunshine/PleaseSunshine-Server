@@ -13,17 +13,17 @@ var date = new Date();
 /* /simulation/energy/:lat/:lon/:angle */
 const getEnergy = async(req, res) => {
     try{
-        // let {lat,lon,angle} = req.params;e
-        // let e = await energy.getSunshine(lat, lon, angle)
-        let e = 2062.453333;
-        let angle = 30;
-        let subnshine = await energy.getEnergy(e, angle)
+        let {lat,lon,angle} = req.params;
+
+        let e = await energy.getSunshine(lat, lon)
+        let sunshine = await energy.getEnergy(e, angle)
         let persent=  await energy.getPercentage()
-        let result = {subnshine, persent}
+        let result = {sunshine, persent}
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);
-        respondOnError(err.message, res, err.statusCode);
+        if(err.message=='Bad Request') respondOnError(err.message, res, 400);
+        else respondOnError(err.message, res, err.statusCode);
     } 
 }
 
