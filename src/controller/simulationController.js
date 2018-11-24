@@ -10,7 +10,7 @@ const cost = require("../logics/cost");
 
 var date = new Date();
 
-/* /simulation/energy/:lat/:lon/:angle */
+/* /simulation/energy?lat=&lon=&angle= */
 const getEnergy = async(req, res) => {
     try{
         let {lat,lon,angle} = req.query;
@@ -51,32 +51,9 @@ const getEnv = async(req, res) => {
         respondOnError(err.message, res, err.statusCode);
     } 
 }
-// /* /simulation/cost/:watt */
-// const getCost = async(req, res) => {
-//     try{
-//         const watt = Number(req.query.watt);
-//         const savedMoney = await cost.getElecReduAvg(1000000, watt);
-//         const installCostAvg = await cost.getInstallCostAvg(watt);
-//         /* 수정필요 */
-//         const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
-//         const volunteer = await cost.getvolunteer(watt);
-//         const coffee = await cost.getCoffee(watt);
 
-//         const result = {
-//             watt, 
-//             savedMoney, 
-//             installCostAvg,
-//             bePoint,
-//             volunteer,
-//             coffee
-//         }
-//         respondJson("Success", result, res, 200);
-//         // respondJson("Success", installCostAvg, res, 200);
-//     }catch(err){
-//         console.log(err);
-//         respondOnError(err.message, res, err.statusCode);
-//     } 
-// }
+// /* /simulation/cost?watt= */
+// /* /simulation/cost */
 const getCost = async(req, res)=>{
     try{
         if(req.query.watt) watts =[req.query.watt];
