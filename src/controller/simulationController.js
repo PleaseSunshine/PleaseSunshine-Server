@@ -61,7 +61,7 @@ const getCost = async(req, res)=>{
         var result =[];
         var i=0;
         while(i<watts.length){
-            var watt = watts[i];
+            var watt = Number(watts[i]);
             const savedMoney = await cost.getElecReduAvg(1000000, watt);
             const installCostAvg = await cost.getInstallCostAvg(watt);
             const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
