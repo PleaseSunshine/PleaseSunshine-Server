@@ -28,20 +28,3 @@ module.exports = {
         })
     } 
 }
-
-// const params = {
-//     s3: s3,
-//     Bucket: 'cjimg', 
-//     acl: 'public-read',
-//     key: function (req, file, cb) {
-//         cb(null, `${package}/${date.YYYY}/${date.MM}/${date.DD}/${file.originalname}`)
-//     },
-//     Body: JSON.stringify(data, null, 2)
-// };
-// s3.upload(params, function(s3Err, data) {
-//     if (s3Err) throw s3Err
-//     console.log(`File uploaded successfully at ${data.Location}`)
-// });
-
-
-// uploadFile();

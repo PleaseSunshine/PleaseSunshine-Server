@@ -1,3 +1,6 @@
+/*
+        40.76.74.37:8888/panel?c_id=1
+*/
 const express = require('express');
 const router = express.Router();
 const pool = require('../lib/db').getPool();

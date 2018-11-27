@@ -1,8 +1,3 @@
-/*
-    위도	경도	kWh/m2
-*/  
-const key = require("../../config/secretKey");
-const env = require("../models/env");
 const EnergyCalculator = require("../lib/EnergyCalculator");
 const busanSun  = require("../models/busanSun");
 
@@ -11,7 +6,6 @@ module.exports = {
     //e1, e2, e3 과 angle로 태양광 구함
     getSunshine : async function (lat, lon) {
         let result = await busanSun.selectMinSunshine(lat, lon);
-        console.log("s" + result)
         if(!result[0].sunshine) return 0
         return Number(result[0].sunshine)
     },

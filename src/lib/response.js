@@ -17,4 +17,4 @@ const respondOnError = (message, res, status) => {
     });
 }
   
-module.exports = {  respondJson, respondOnError}
+module.exports = {respondJson, respondOnError}

@@ -18,10 +18,7 @@ module.exports = {
             if(err){return new Error('kospo openAPI server error')}
             else {
                 if(res.statusCode == 200){
-                    // console.log(typeof(body)); 
-                    // console.log(body)
                     parser.parseString(body, async function (err, result) {
-                        // var airdist = result['response']['header']['airdst'] = '-' ? 0: result['response']['header']['airdst']
                         let airsox=0, airnox=0, airdst=0;
                         result.response.header.forEach(element => {
                             airsox += Number(element.avgair01)

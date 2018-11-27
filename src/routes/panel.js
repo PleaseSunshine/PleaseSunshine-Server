@@ -1,11 +1,3 @@
-/*
-    URL : /collection/panel
-    Description : 업체 디테일
-    Content-type : x-www-form-urlencoded
-    method : GET
-    query = /?c_id={업체인덱스}
-*/
-
 const express = require('express');
 const router = express.Router();
 const pool = require('../lib/db').getPool();
