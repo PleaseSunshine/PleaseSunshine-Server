@@ -43,7 +43,8 @@ const calE = (energy, angle) => {
   const indexLower = 'angle'+lowerAngle;
   const upperEfficiency = efficiency[indexUpper];
   const lowerEfficiency = efficiency[indexLower];
+  const userEfficiency = lowerEfficiency + (upperEfficiency - lowerEfficiency) * ((angle - lowerAngle) / 10);
 
-  return (energy * (userEfficiency / 100)).toFixed(2);
+  return  (energy * (userEfficiency / 100)).toFixed(2);
 }
 module.exports = calE;

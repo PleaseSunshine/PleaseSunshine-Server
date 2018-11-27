@@ -1,4 +1,3 @@
-const key = require("../../config/secretKey");
 const pannelInfo = require("../models/pannelInfo")
 const SaveMoneyCalculator = require("../lib/SaveMoneyCalculator")
 
@@ -25,5 +24,4 @@ module.exports = {
     getCoffee : async function(watt){
         return 65
     }
-
 }

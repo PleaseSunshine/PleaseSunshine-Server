@@ -5,7 +5,7 @@
 비용 한눈 - /cost
 */
 const { respondJson, respondOnError } = require('../lib/response');
-const energy = require("../logics/energy");w
+const energy = require("../logics/energy");
 const kospo = require("../logics/kospo");
 const cost = require("../logics/cost");
 
@@ -78,7 +78,7 @@ const getCost = async(req, res)=>{
             }else result.push({watt, savedMoney, installCostAvg,bePoint})
             i++;
         }
-        
+
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);

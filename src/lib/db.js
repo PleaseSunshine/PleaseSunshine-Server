@@ -9,7 +9,6 @@ const getPool = () => {
       return DBpool
     }
     return DBpool
-  
   }
 const query = async (...args) => {
     const query = args[0]
@@ -23,7 +22,6 @@ const query = async (...args) => {
 }
 const transaction = async (...args) => {
     let result = "Success"
-
     let connection
 
     try{
