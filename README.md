@@ -3,8 +3,8 @@
 
 
 ### "햇님아부탁해" 프로젝트 개발 정보
-서버 환경 : Node.js , AWS S3 , AWS RDS , Azure Ubuntu 18.04 VM , MySQL
-클라이언트 환경 : iOS
+> 서버 환경 : Node.js , AWS S3 , AWS RDS , Azure Ubuntu 18.04 VM , MySQL </br>
+> 클라이언트 환경 : iOS </br></br>
 
 ### "햇님아부탁해" API 예시
 BaseUrl : 52.231.66.80:8888
