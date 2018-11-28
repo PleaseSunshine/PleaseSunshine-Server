@@ -1,6 +1,6 @@
 # PleaseSunshine-Server
 
-#### BaseUrl : 40.76.74.37:8888
+#### BaseUrl : 52.231.66.80:8888
 #### Content-type : x-www-form-urlencoded
 #### Method : get
 
