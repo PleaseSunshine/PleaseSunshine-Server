@@ -1,4 +1,7 @@
 # PleaseSunshine-Server
+## 2018 KOSPO정보전략실 모바일서비스 공모전
+
+남부발전소 공공데이터 Open API 를 이용한 대내외 활용이 가능한 발전 또는 보안 산업 연계 IOS앱 개발입니다.
 
 #### BaseUrl : 52.231.66.80:8888
 #### Content-type : x-www-form-urlencoded
@@ -16,3 +19,9 @@
 /company/	</br></br>
 6. 업체 제품 </br>
 /panel?c_id= </br></br>
+
+
+2 ) "햇님아부탁해" 프로젝트 개발 정보
+서버 환경 : Node.js , AWS S3 , AWS RDS , Azure Ubuntu 18.04 VM , MySQL
+클라이언트 환경 : iOS
+서비 API Reference : https://documenter.getpostman.com/view/3468701/RzfatCac
