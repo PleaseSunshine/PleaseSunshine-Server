@@ -1,4 +1,5 @@
-## 2018 KOSPO정보전략실 모바일서비스 공모전 </br> PleaseSunshine-Server
+# PleaseSunshine-Server
+## 2018 KOSPO정보전략실 모바일서비스 공모전 
 > 남부발전소 공공데이터 Open API 를 이용한 대내외 활용이 가능한 발전 또는 보안 산업 연계 IOS앱 개발입니다.
 
 
@@ -7,9 +8,9 @@
 > 클라이언트 환경 : iOS </br></br>
 
 ### "햇님아부탁해" API 예시
-BaseUrl : 52.231.66.80:8888
-Content-type : x-www-form-urlencoded
-Method : get
+BaseUrl : 52.231.66.80:8888 </br> 
+Content-type : x-www-form-urlencoded </br> 
+Method : get </br></br>
 
 1. 에너지탭 </br>
 /energy?lat=&lon=&angle </br></br>
