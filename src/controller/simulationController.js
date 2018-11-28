@@ -67,10 +67,12 @@ const getCost = async(req, res)=>{
         var i=0;
 
         while(i<watts.length){
-            var watt = Number(watts[i]);
+            var watt = parseInt(watts[i]);
             const savedMoney = await cost.getElecReduAvg(1000000, watt);
             const installCostAvg = await cost.getInstallCostAvg(watt);
             const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
+
+            console.log(typeof(savedMoney) + typeof(installCostAvg)+ typeof(savedMoney))
             if(watts.length==1){
                 var volunteer = await cost.getvolunteer(watt);
                 var coffee = await cost.getCoffee(watt);

@@ -55,8 +55,8 @@ const calSavedMoney = (money, generatorWatt) => {
 };
 
 const calBePoint = (savedMoney, installCostAvg)=>{
-  const m_savedMoney = Math.floor((savedMoney / 12));
-  return (installCostAvg/m_savedMoney).toFixed(1);
+  // const m_savedMoney = Math.floor((savedMoney / 12));
+  return (installCostAvg/savedMoney).toFixed(1);
 }
 
 
