@@ -1,5 +1,4 @@
-# PleaseSunshine-Server
-## 2018 KOSPO정보전략실 모바일서비스 공모전 
+## 2018 KOSPO정보전략실 모바일서비스 공모전 </br> PleaseSunshine-Server
 > 남부발전소 공공데이터 Open API 를 이용한 대내외 활용이 가능한 발전 또는 보안 산업 연계 IOS앱 개발입니다.
 
 
@@ -24,4 +23,3 @@ Method : get </br></br>
 /company/	</br></br>
 6. 업체 제품 </br>
 /panel?c_id= </br></br>
-
