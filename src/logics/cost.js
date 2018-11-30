@@ -15,12 +15,12 @@ module.exports = {
     /* 지원금 데이터 추가되면 수정 예정 */
     getBePoint : async function(savedMoney, installCostAvg){
         let bePoint = await SaveMoneyCalculator.calBePoint(savedMoney, installCostAvg);
-        return bePoint;
+        return parseInt(bePoint);
     },
     getRefrigerator : async function(watt){
         return parseInt((watt * 3.6 * 365)/ (369800 / 365));
     },
     getCoffee : async function(savedMoney){
-        return (savedMoney*12/4100).toFixed(1);
+        return parseInt((savedMoney*12/4100).toFixed(1));
     }
 }
