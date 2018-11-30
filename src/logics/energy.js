@@ -15,4 +15,4 @@ module.exports = {
     getPercentage : async function (localEnergy) {
         return parseInt(((localEnergy * 100) / 2100).toFixed(0));
     },
-}
+} 

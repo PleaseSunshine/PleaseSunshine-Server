@@ -74,9 +74,9 @@ const getCost = async(req, res)=>{
 
             console.log(typeof(savedMoney) + typeof(installCostAvg)+ typeof(savedMoney))
             if(watts.length==1){
-                var refrigerator = await cost.getRefrigerator(watt);
+                var volunteer = await cost.getRefrigerator(watt);
                 var coffee = await cost.getCoffee(savedMoney);
-                result.push({watt, savedMoney, installCostAvg, bePoint, refrigerator, coffee})
+                result.push({watt, savedMoney, installCostAvg, bePoint, volunteer, coffee})
             }else result.push({watt, savedMoney, installCostAvg,bePoint})
             i++;
         }
