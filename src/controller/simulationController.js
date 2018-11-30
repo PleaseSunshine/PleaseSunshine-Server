@@ -16,11 +16,11 @@ const getEnergy = async(req, res) => {
     try{
         let {lat,lon,angle} = req.query;
 
-        let e = await energy.getSunshine(lat, lon)
-        let sunshine = await energy.getEnergy(e, angle)
-        let persent=  await energy.getPercentage()
+        let e = await energy.getSunshine(lat, lon);
+        let sunshine = await energy.getEnergy(e, angle);
+        let persent = await energy.getPercentage(sunshine);
 
-        let result = {sunshine, persent}
+        let result = {sunshine, persent};
         respondJson("Success", result, res, 200);
     }catch(err){
         console.log(err);
@@ -36,17 +36,16 @@ const getEnv = async(req, res) => {
         if(date.getDay() == 1) await kospo.getKospoAPI();
         var raw_result  = await kospo.getEnvData();
 
-        let result = { "cado":{}, "nox" :{}, "udst":{}};
+        let result = { "nox":{}, "sox" :{}, "udst":{}, "busansox":{} };
         var i=0;
         var source = ["sun", "kospo", "thermal_power"];
 
-        await raw_result.forEach(element => {
-            if(element.key="e_cado") result.cado[source[i]] = element.e_cado;
-            if(element.key="e_nox") result.nox[source[i]] = element.e_nox;
-            if(element.key="e_udst") result.udst[source[i]] = element.e_udst;
-            console.log(result.cado);
-            i++;
-        });
+        for(let i = 0 ; i < 3 ; i++){
+            if(raw_result[i].key="e_nox") result.nox[source[i]] = raw_result[i].e_nox;
+            if(raw_result[i].key="e_sox") result.sox[source[i]] = raw_result[i].e_sox;
+            if(raw_result[i].key="e_udst") result.udst[source[i]] = raw_result[i].e_udst;
+        }
+        result.busansox = raw_result[3].e_sox;
 
         respondJson("Success", result, res, 200);
     }catch(err){
@@ -63,20 +62,21 @@ const getCost = async(req, res)=>{
         if(req.query.watt) watts =[req.query.watt];
 
         else var watts = [250, 260, 270, 300];
+        const supportMoney = [510000, 530000, 550000, 610000];
         var result =[];
         var i=0;
 
         while(i<watts.length){
             var watt = parseInt(watts[i]);
             const savedMoney = await cost.getElecReduAvg(1000000, watt);
-            const installCostAvg = await cost.getInstallCostAvg(watt);
+            const installCostAvg = await cost.getInstallCostAvg(watt, parseInt(supportMoney[i]));
             const bePoint = await cost.getBePoint(savedMoney, installCostAvg);
 
             console.log(typeof(savedMoney) + typeof(installCostAvg)+ typeof(savedMoney))
             if(watts.length==1){
-                var volunteer = await cost.getvolunteer(watt);
-                var coffee = await cost.getCoffee(watt);
-                result.push({watt, savedMoney, installCostAvg,bePoint,volunteer,coffee})
+                var refrigerator = await cost.getRefrigerator(watt);
+                var coffee = await cost.getCoffee(savedMoney);
+                result.push({watt, savedMoney, installCostAvg, bePoint, refrigerator, coffee})
             }else result.push({watt, savedMoney, installCostAvg,bePoint})
             i++;
         }

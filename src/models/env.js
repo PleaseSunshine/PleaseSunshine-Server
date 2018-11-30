@@ -4,7 +4,7 @@
 const db = require('../lib/db');
 
 const insertEnv = async(airsox, airnox, airdst) => {
-    const sql = `UPDATE Environment SET e_cado=?, e_nox=?, e_udst=? where e_source = 1`;
+    const sql = `UPDATE Environment SET e_cado=?, e_nox=?, e_udst=? where e_source = 4`;
     const result = db.query(sql, [airsox, airnox, airdst]);
 
     return result;

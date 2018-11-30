@@ -64,3 +64,4 @@ typings/
 # Amazon Web Services
 *.pem
 
+.DS_Store
